@@ -21,10 +21,7 @@ describe('Mnemonic', () => {
     expect(publicKey).toEqual(publicKeyMock0);
     expect(privateKey).toEqual(privateKeyMock0);
 
-    const {
-      publicKey: publicKeyLegacy,
-      privateKey: privateKeyLegacy,
-    } = mnemonic.keyPairAtIndex(index0, true);
+    const { publicKey: publicKeyLegacy, privateKey: privateKeyLegacy } = mnemonic.keyPairAtIndex(index0, true);
     expect(publicKeyLegacy).toEqual(publicKeyLegacyMock0);
     expect(privateKeyLegacy).toEqual(privateKeyLegacyMock0);
   });
@@ -35,16 +32,13 @@ describe('Mnemonic', () => {
     expect(publicKey).toEqual(publicKeyMock1);
     expect(privateKey).toEqual(privateKeyMock1);
 
-    const {
-      publicKey: publicKeyLegacy,
-      privateKey: privateKeyLegacy,
-    } = mnemonic.keyPairAtIndex(index1, true);
+    const { publicKey: publicKeyLegacy, privateKey: privateKeyLegacy } = mnemonic.keyPairAtIndex(index1, true);
     expect(publicKeyLegacy).toEqual(publicKeyLegacyMock1);
     expect(privateKeyLegacy).toEqual(privateKeyLegacyMock1);
   });
 
   it('Generates phrase', () => {
-    const mnemonic = new Mnemonic({ numWords: 24 })
-    expect(mnemonic.phrase.split(' ').length).toEqual(24)
-  })
+    const mnemonic = new Mnemonic({ numWords: 24 });
+    expect(mnemonic.phrase.split(' ').length).toEqual(24);
+  });
 });

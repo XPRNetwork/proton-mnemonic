@@ -1,5 +1,5 @@
 import { Numeric } from '@proton/js';
-import { HDKey } from "@scure/bip32";
+import { HDKey } from '@scure/bip32';
 import { calcBip32ExtendedKey, generateMnemonic } from './mnemonic';
 
 export class Mnemonic {
