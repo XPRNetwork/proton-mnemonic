@@ -1,12 +1,12 @@
 import { Numeric } from '@proton/js';
-import { BIP32Interface } from '@proton/bip32';
+import { HDKey } from "@scure/bip32";
 import { calcBip32ExtendedKey, generateMnemonic } from './mnemonic';
 
 export class Mnemonic {
   numWords = 15;
   phrase: string;
   passphrase?: string;
-  bip32ExtendedKey: BIP32Interface;
+  bip32ExtendedKey: HDKey;
   derivationPath = "m/44'/194'/0'/0";
 
   get strength() {
@@ -33,10 +33,10 @@ export class Mnemonic {
   }
 
   keyPairAtIndex(index: number, oldFormat?: boolean) {
-    const key = this.bip32ExtendedKey.derive(index);
+    const key = this.bip32ExtendedKey.deriveChild(index);
     const publicKeyRaw = {
       type: Numeric.KeyType.k1,
-      data: new Uint8Array(key.publicKey),
+      data: new Uint8Array(key.publicKey!),
     };
     const privateKeyRaw = {
       type: Numeric.KeyType.k1,
